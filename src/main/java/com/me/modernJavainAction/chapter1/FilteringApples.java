@@ -62,14 +62,14 @@ public class FilteringApples {
     filterApples(inventory, (Apple a) -> a.getWeight() > 150);
     filterApples(inventory, (Apple a) -> a.getWeight() < 80 || "red".equals(a.getColor()));
 
-    List<Apple> heavyApples = inventory.stream()
+    List<Apple> heavyApples =
+        inventory.stream()
         .filter((Apple a) -> a.getWeight() > 150)
-        .collect(toList());
+        .collect(Collectors.toList());
 
-    inventory.stream()
-        .filter(Apple::isGreenApple)
-        .collect(toList());
-
+    List<Apple> heavyApplesWithStreamToList =
+        inventory.stream()
+        .filter(Apple::isGreenApple).toList();
 
 
   } // main END
