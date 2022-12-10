@@ -37,7 +37,7 @@ public class MethodReferenceSortTest {
     //Apple::getWeight 는 Function<Apple, Object> 입니다.
     inventory.sort(comparing(Apple::getWeight).thenComparing(Apple::getColor)); //무게 오름차순 정렬. 무게가 같으면 색 오름차순 정렬
 
-    inventory.stream()
+    inventory.stream()//Collection 의 stream.Collection 은 interface
         .sorted(comparing(Apple::getWeight) //무게로 1차 정렬
             .thenComparing(Apple::getColor).reversed()) //이름 내림차순으로 2차 정렬
         .forEach(System.out::println);
