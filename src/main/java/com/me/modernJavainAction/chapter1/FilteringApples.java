@@ -23,6 +23,7 @@ public class FilteringApples {
       new Apple(155, "green"),
       new Apple(120, "red")
     );
+//    inventory.add(new Apple(80, "green"));
 
     List<Apple> inventory2 = List.of(
         new Apple(80, "green"),
@@ -37,7 +38,11 @@ public class FilteringApples {
         return Integer.compare(a1.getWeight(), a2.getWeight());
       }
     });
+    //Comparable , Comparator
+    //Comparable : compareTo(T o1)
+    //Comparator : compare(T o1, T o2)
     System.out.println(inventory);
+
 
     //==두 번째 방법==//
     inventory.sort(comparing(Apple::getWeight));

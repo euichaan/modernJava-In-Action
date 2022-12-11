@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class MethodReferenceSortTest {
@@ -25,6 +26,14 @@ public class MethodReferenceSortTest {
             .thenComparing(Employee::getLastName))
         .forEach(System.out::println);
 
+    emp.stream()
+            .filter(e -> e.age > 30).collect(Collectors.toList());
+
+    emp.stream()
+            .sorted(comparing(Employee::getFirstName) //이름
+                .thenComparing(Employee::getLastName)) //성
+                .forEach(System.out::println);
+
     System.out.println("------------------------------------------");
 
     List<Apple> inventory = Arrays.asList(
@@ -35,6 +44,7 @@ public class MethodReferenceSortTest {
     );
 
     //Apple::getWeight 는 Function<Apple, Object> 입니다.
+    //Function<Employ, String>
     inventory.sort(comparing(Apple::getWeight).thenComparing(Apple::getColor)); //무게 오름차순 정렬. 무게가 같으면 색 오름차순 정렬
 
     inventory.stream()//Collection 의 stream.Collection 은 interface
