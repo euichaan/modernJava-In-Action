@@ -62,6 +62,7 @@ public class FilteringApples {
     filterApples(inventory, Apple::isGreenApple);
     filterApples(inventory, Apple::isHeavyApple);
 
+
     //==lambda==//
     filterApples(inventory, (Apple a) -> "green".equals(a.getColor()));
     filterApples(inventory, (Apple a) -> a.getWeight() > 150);

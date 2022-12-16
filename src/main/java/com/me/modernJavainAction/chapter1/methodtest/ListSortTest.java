@@ -1,4 +1,4 @@
-package com.me.modernJavainAction.methodtest;
+package com.me.modernJavainAction.chapter1.methodtest;
 
 import java.util.Arrays;
 import java.util.Collections;

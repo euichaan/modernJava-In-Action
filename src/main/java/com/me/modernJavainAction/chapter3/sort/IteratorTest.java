@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
 public class IteratorTest {
 
   public static void main(String[] args) {
-//    List<Character> letters = new ArrayList<>(
-//        Arrays.asList('A', 'B', '1', '2', 'C', 'D', '3', 'E', '4', '5'));
+    List<Character> letters = new ArrayList<>(
+        Arrays.asList('A', 'B', '1', '2', 'C', 'D', '3', 'E', '4', '5'));
 
 //    for (Iterator<Character> iter = letters.iterator(); iter.hasNext(); ) {
 //      Character letter = iter.next();
@@ -18,12 +18,19 @@ public class IteratorTest {
 //        iter.remove(); //숫자 원소 제거
 //      }
 //    }
-    List<Character> letters = new ArrayList<>(
-        Arrays.asList('A', 'B', '1', '2', 'C', 'D', '3', 'E', '4', '5'));
 
-    List<Character> alphabets = letters.stream()
-        .filter(Character::isAlphabetic)
-        .collect(Collectors.toList());
+    for (Iterator<Character> iter = letters.iterator(); iter.hasNext();) {
+      Character letter = iter.next();
+      if (Character.isDigit(letter)) {
+        iter.remove();
+      }
+    }
+//    List<Character> letters = new ArrayList<>(
+//        Arrays.asList('A', 'B', '1', '2', 'C', 'D', '3', 'E', '4', '5'));
+//
+//    List<Character> alphabets = letters.stream()
+//        .filter(Character::isAlphabetic)
+//        .collect(Collectors.toList());
 
 
   }
