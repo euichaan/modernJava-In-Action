@@ -9,6 +9,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class PlayerTest {
 
@@ -52,6 +53,10 @@ public class PlayerTest {
         .sorted(comparing(Player::getScore)
             .thenComparing(Player::getName))
         .forEach(System.out::println);
+
+    List<Player> collect = players.stream()
+        .filter(player -> player.getScore() > 150)
+        .collect(Collectors.toList());
 
   }
 
