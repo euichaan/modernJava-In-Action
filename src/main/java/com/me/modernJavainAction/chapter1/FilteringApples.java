@@ -113,6 +113,7 @@ public class FilteringApples {
     boolean test(T t);
   }
 
+  //람다 -> 함수형 인터페이스를 인수로 받는 메서드로 전달할 수 있다
   static List<Apple> filterApples(List<Apple> inventory, Predicate<Apple> p) {
     //메서드가 p라는 이름의 프레디케이트 파라미터로 전달됨.
     List<Apple> result = new ArrayList<>();

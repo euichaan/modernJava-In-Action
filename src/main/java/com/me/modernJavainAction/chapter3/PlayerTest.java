@@ -54,10 +54,5 @@ public class PlayerTest {
             .thenComparing(Player::getName))
         .forEach(System.out::println);
 
-    List<Player> collect = players.stream()
-        .filter(player -> player.getScore() > 150)
-        .collect(Collectors.toList());
-
   }
-
 }
