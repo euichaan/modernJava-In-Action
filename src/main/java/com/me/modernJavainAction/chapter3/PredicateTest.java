@@ -18,11 +18,11 @@ public class PredicateTest {
 
     List<String> listOfStrings = new ArrayList<>(List.of("hello"));
 
-    Predicate<String> nonEmptyStringPredicate = (String s) -> !s.isEmpty();
-    List<String> nonEmpty = filter(listOfStrings, nonEmptyStringPredicate);
+    List<String> nonEmpty = filter(listOfStrings, (String s) -> !s.isEmpty());
     System.out.println(nonEmpty);
   }
 
+  //T -> boolean
   public static <T> List<T> filter(List<T> list, Predicate<T> p) {
     List<T> results = new ArrayList<>();
     for (T t : list) {

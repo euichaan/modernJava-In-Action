@@ -7,6 +7,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
+import java.util.function.BiFunction;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -47,10 +50,18 @@ public class MethodReferenceSortTest {
     //Function<Employ, String>
     inventory.sort(comparing(Apple::getWeight).thenComparing(Apple::getColor)); //무게 오름차순 정렬. 무게가 같으면 색 오름차순 정렬
 
+
     inventory.stream()//Collection 의 stream.Collection 은 interface
         .sorted(comparing(Apple::getWeight) //무게로 1차 정렬
             .thenComparing(Apple::getColor).reversed()) //이름 내림차순으로 2차 정렬
         .forEach(System.out::println);
 
+    inventory.sort((a1, a2) -> a1.getWeight().compareTo(a2.getWeight()));
+    inventory.sort(Comparator.comparing(Apple::getWeight));
+
+    Comparator<Apple> c = comparing((Apple a) -> a.getWeight());
+    inventory.sort(comparing(apple -> apple.getWeight()));
+
+    inventory.sort(comparing(Apple::getWeight));
   }
 }

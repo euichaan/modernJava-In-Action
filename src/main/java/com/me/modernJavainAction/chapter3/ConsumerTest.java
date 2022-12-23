@@ -7,6 +7,7 @@ import java.util.function.Consumer;
 /**
  * Consumer<T>
  * 제네릭 형식 T 객체를 받아서 void를 반환하는 accept라는 추상 메서드를 정의
+ * T -> void
  */
 public class ConsumerTest {
 

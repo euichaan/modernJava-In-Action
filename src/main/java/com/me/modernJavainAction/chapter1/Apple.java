@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter @Setter
 public class Apple {
 
-  private int weight = 0;
+  private Integer weight = 0;
   private String color = "";
 
   public static boolean isGreenApple(Apple apple) {

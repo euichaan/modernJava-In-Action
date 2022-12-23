@@ -7,15 +7,18 @@ import java.util.Comparator;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@AllArgsConstructor
+@NoArgsConstructor
 public class Apple {
-  private Integer weight = 0;
-  private Color color;
 
-  public Apple(int weight, Color color) {
+  private Color color;
+  private Integer weight = 0;
+
+  public Apple(Integer weight) {
     this.weight = weight;
-    this.color = color;
   }
 
   public Integer getWeight() {
@@ -34,6 +37,12 @@ public class Apple {
     this.color = color;
   }
 
+  //==비공개 헬퍼 메서드==//
+  private boolean isValidName(String string) {
+    return Character.isUpperCase(string.charAt(0));
+  }
+
+
   @SuppressWarnings("boxing")
   @Override
   public String toString() {
@@ -42,9 +51,9 @@ public class Apple {
 
   public static void main(String[] args) {
     List<Apple> list = new ArrayList<>(Arrays.asList(
-        new Apple(100, Color.GREEN),
-        new Apple(80, Color.RED),
-        new Apple(50, Color.GREEN)
+        new Apple(Color.GREEN, 100),
+        new Apple(Color.RED, 80),
+        new Apple(Color.GREEN, 50)
     ));
     Collections.sort(list, new Comparator<Apple>() {
       @Override
@@ -52,5 +61,6 @@ public class Apple {
         return a1.getWeight().compareTo(a2.getWeight());
       }
     });
+
   }
 }

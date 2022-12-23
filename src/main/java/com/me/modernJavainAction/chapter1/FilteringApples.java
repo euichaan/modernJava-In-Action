@@ -1,17 +1,14 @@
 package com.me.modernJavainAction.chapter1;
 
 import static java.util.Comparator.*;
-import static java.util.stream.Collectors.*;
 
 import java.io.File;
 import java.io.FileFilter;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class FilteringApples {
@@ -69,16 +66,22 @@ public class FilteringApples {
     filterApples(inventory, (Apple a) -> a.getWeight() < 80 || "red".equals(a.getColor()));
 
     List<Apple> heavyApples =
-        inventory.stream()
+        inventory.parallelStream()
         .filter((Apple a) -> a.getWeight() > 150)
         .collect(Collectors.toList());
 
     List<Apple> heavyApplesWithStreamToList =
-        inventory.stream()
+        inventory.parallelStream()
         .filter(Apple::isGreenApple).toList();
+
+    List<String> words = new ArrayList<>();
 
 
   } // main END
+
+  private boolean isValidName(String string) {
+    return Character.isUpperCase(string.charAt(0));
+  }
 
   public static List<Apple> filterGreenApples(List<Apple> inventory) {
     List<Apple> result = new ArrayList<>();
@@ -125,7 +128,4 @@ public class FilteringApples {
     }
     return result;
   }
-
-
-
 }
