@@ -13,9 +13,9 @@ public class LambdaTest {
 
   public static void main(String[] args) {
     List<Apple> inventory = Arrays.asList(
-        new Apple(80, GREEN),
-        new Apple(155, GREEN),
-        new Apple(120, RED)
+        new Apple(GREEN, 80),
+        new Apple(GREEN, 155),
+        new Apple(RED, 120)
     );
 
     List<Apple> heavyApples = inventory.stream()
