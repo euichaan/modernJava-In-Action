@@ -16,9 +16,9 @@ public class TargetTyping {
     list.add("hello");
 
     Predicate<String> ps = s -> list.add(s);
-    int portNumber = 1337;
-    Runnable r = () -> System.out.println(portNumber); // Error 
-    portNumber = 31337;
+//    int portNumber = 1337;
+//    Runnable r = () -> System.out.println(portNumber); // Error
+//    portNumber = 31337;
   }
 
 }
