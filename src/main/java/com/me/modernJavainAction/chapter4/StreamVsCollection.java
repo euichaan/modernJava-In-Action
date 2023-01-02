@@ -24,10 +24,19 @@ public class StreamVsCollection {
       }
     }
 
+
+    //스트림 : 내부 반복
     menu.stream()
+        .filter(dish -> dish.getCalories() > 300) // CPU 1
+        .map(Dish::getName) // CPU 1
+        .collect(Collectors.toList());
+
+    menu.parallelStream()
         .filter(dish -> dish.getCalories() > 300)
         .map(Dish::getName)
         .collect(Collectors.toList());
+
+
 
 
 

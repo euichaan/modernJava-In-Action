@@ -44,6 +44,8 @@ public class PlayerTest {
     players.stream()
         .sorted(comparing(Player::getScore).reversed())
         .forEach(System.out::println);
+
+
     Consumer<Player> hi = Player::hi;
     Function<Player, Integer> hello = Player::hello; //Function<T, R> T 받아서 R 반환
 

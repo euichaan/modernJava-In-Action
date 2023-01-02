@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 
 public class IntermediateOperation {
   public static void main(String[] args) {
+    
+    //내부 반복
     List<String> names = menu.stream()
         .filter(dish -> {
           System.out.println("filtering = " + dish.getName());
@@ -16,7 +18,7 @@ public class IntermediateOperation {
           System.out.println("mapping:" + dish.getName());
           return dish.getName();
         })
-        .limit(3)
+        .limit(3) //쇼트 서킷
         .collect(Collectors.toList());
     System.out.println(names);
 

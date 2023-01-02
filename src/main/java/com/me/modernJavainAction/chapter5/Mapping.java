@@ -19,10 +19,12 @@ public class Mapping {
         .map(Dish::getName)//인수로 제공된 함수는 각 요소에 적용
         .collect(Collectors.toList());
 
+    //단일 스트림 안의 요소를 원하는 특정 형태로 변환할 수 있습니다.
     List<String> words = Arrays.asList("Modern", "Java", "In", "Action");
     List<Integer> wordLengths = words.stream()
         .map(String::length)
         .collect(Collectors.toList());
+
 
     //각 요리명의 길이를 알고 싶을 때
     List<Integer> dishNameLengths = menu.stream()

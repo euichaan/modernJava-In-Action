@@ -25,13 +25,27 @@ public class Filtering {
         .collect(Collectors.toList());
 
     //고유 요소 필터링
+//    List<Integer> numbers = Arrays.asList(1, 2, 1, 3, 3, 2, 4);
+//    numbers.stream()
+//        .filter(i -> i % 2 == 0)
+//        .distinct()
+////        .forEach(i -> System.out.printf("%d ", i));
+//        .forEach(Filtering::printWithSpace);
+//    System.out.println();
+
+    System.out.println("---------------------------------");
+
     List<Integer> numbers = Arrays.asList(1, 2, 1, 3, 3, 2, 4);
     numbers.stream()
         .filter(i -> i % 2 == 0)
         .distinct()
-//        .forEach(i -> System.out.printf("%d ", i));
-        .forEach(Filtering::printWithSpace);
-    System.out.println();
+        .forEach(Filtering::printWithSpace); // T -> void
+
+    System.out.println("---------------------------------");
+
+
+
+
 
     /**
      * 스트림 슬라이싱

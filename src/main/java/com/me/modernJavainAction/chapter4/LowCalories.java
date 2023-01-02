@@ -10,6 +10,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class LowCalories {
 
@@ -46,6 +47,7 @@ public class LowCalories {
       lowCaloricDishesName.add(dish.getName());
     }
     System.out.println(lowCaloricDishesName);
+    
 
     /**
      * Java8 Stream : 선언형(데이터를 처리하는 임시 구현 코드 대신 질의로 표현)
@@ -55,7 +57,9 @@ public class LowCalories {
             .filter(d -> d.getCalories() < 400) //400칼로리 이하의 요리 선택
             .sorted(comparing(Dish::getCalories)) //칼로리로 요리 정렬
             .map(Dish::getName)//요리명 추출
-            .collect(Collectors.toList());
+            .collect(Collectors.toList()); //모든 요리명을 리스트에 저장
+
+
   }
 
 }
