@@ -104,7 +104,6 @@ public class PuttingIntoPractice {
     Optional<Transaction> min = transactions.stream()
         .min(comparing(Transaction::getValue));
 
-
   } //main END
 
 }
