@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import net.bytebuddy.pool.TypePool.Resolution.Illegal;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -39,5 +40,17 @@ public class ConvertToMapUnitTest {
     assertEquals(2, booksByYear.size());
     assertEquals("0395489318", booksByYear.get(1954).getIsbn());
   }
+
+  @Test
+  public void whenCreateConcurrentHashMap() throws Exception {
+      assertTrue(convertToMap.listToConcurrentMap(bookList) instanceof ConcurrentHashMap);
+  }
+
+  @Test
+  public void whenMapIsSorted() throws Exception {
+      assertTrue(convertToMap.listToSortedMap(bookList).firstKey().equals("The Fellowship of the Ring"));
+  }
+
+
 
 }
