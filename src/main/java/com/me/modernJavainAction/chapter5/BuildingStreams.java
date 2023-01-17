@@ -15,6 +15,7 @@ public class BuildingStreams {
     Stream<String> homeValueStream
         = homeValue == null ? Stream.empty() : Stream.of(homeValue);
 
+
     //ofNullable 사용해서 Stream 만들기
     Stream<String> homeValueStreamWithNullable
         = Stream.ofNullable(System.getProperty("home"));
