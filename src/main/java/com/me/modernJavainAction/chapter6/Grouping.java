@@ -4,6 +4,7 @@ import static com.me.modernJavainAction.chapter6.dish.Dish.*;
 import static java.util.Comparator.*;
 import static java.util.stream.Collectors.*;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -76,5 +77,17 @@ public class Grouping {
 				collectingAndThen(
 					maxBy(comparingInt(Dish::getCalories)), //적용할 컬렉터
 					Optional::get))); //반환 함수
+		Map<Type, Integer> totalCaloriesByType = menu.stream().collect(groupingBy(Dish::getType,
+			summingInt(Dish::getCalories)));
+
+		Map<Type, HashSet<CaloricLevel>> caloricLevelsByType = menu.stream().collect(
+			groupingBy(Dish::getType, mapping(dish -> {
+				if (dish.getCalories() <= 400)
+					return CaloricLevel.DIET;
+				else if (dish.getCalories() <= 700)
+					return CaloricLevel.NORMAL;
+				else
+					return CaloricLevel.FAT;
+			}, toCollection(HashSet::new))));
 	}
 }
