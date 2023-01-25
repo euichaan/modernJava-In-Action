@@ -22,12 +22,6 @@ public class FilteringApples {
     );
 //    inventory.add(new Apple(80, "green"));
 
-    List<Apple> inventory2 = List.of(
-        new Apple(80, "green"),
-        new Apple(155, "green"),
-        new Apple(120, "red")
-    );
-
     //==첫 번째 방법==//
     Collections.sort(inventory, new Comparator<Apple>() {
       @Override
@@ -72,7 +66,7 @@ public class FilteringApples {
 
     List<Apple> heavyApplesWithStreamToList =
         inventory.parallelStream()
-        .filter(Apple::isGreenApple).toList();
+        .filter(Apple::isGreenApple).collect(Collectors.toList());
 
     List<String> words = new ArrayList<>();
 

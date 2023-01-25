@@ -32,13 +32,9 @@ public class EmployTest {
 //      e.printStackTrace();
 //    }
 
-    List<Employee> unmodifiableEmployList = List.copyOf(employeeList); // 방어적 복사
     List<Employee> unmodifiableEmployList2 = new ArrayList<>(employeeList); // 방어적 복사
 
     employeeList.add(new Employee(30, "b", "b"));
-    for (Employee employee : unmodifiableEmployList) {
-      System.out.println("employee = " + employee);
-    }
     System.out.println("-------------------------------");
 
     for (Employee employee : unmodifiableEmployList2) {

@@ -2,11 +2,12 @@ plugins {
 	id 'java'
 	id "org.springframework.boot" version "2.3.8.RELEASE"
 	id 'io.spring.dependency-management' version '1.1.0'
+	id 'me.champeau.gradle.jmh' version '0.5.0'
 }
 
 group = 'com.me'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+sourceCompatibility = '11'
 
 configurations {
 	compileOnly {
@@ -23,6 +24,10 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok:1.18.20'
 	annotationProcessor 'org.projectlombok:lombok:1.18.20'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	// Java Microbenchmark Harness
+	implementation 'org.openjdk.jmh:jmh-core:1.18'
+	implementation 'org.openjdk.jmh:jmh-generator-annprocess:1.18'
 }
 
 tasks.named('test') {

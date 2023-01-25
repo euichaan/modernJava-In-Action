@@ -11,7 +11,7 @@ import java.util.List;
 public class ArrayListTest {
 
   public static void main(String[] args) {
-    List<Apple> appleList = List.of(new Apple(80, GREEN));
+
 
 
 
