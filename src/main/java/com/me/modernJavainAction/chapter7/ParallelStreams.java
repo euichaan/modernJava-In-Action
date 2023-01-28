@@ -22,11 +22,24 @@ public class ParallelStreams {
 		return result;
 	}
 
-	public long parallelSum(long n) {
+	public static long parallelSum(long n) {
 		return Stream.iterate(1L, i -> i + 1)
 			.limit(n)
 			.parallel()
 			.reduce(0L, Long::sum);
+	}
+
+	public static long rangedSum(long n) {
+		return LongStream.rangeClosed(1, n)
+			.reduce(Long::sum)
+			.getAsLong();
+	}
+
+	public static long parallelRangedSum(long n) {
+		return LongStream.rangeClosed(1, n)
+			.parallel()
+			.reduce(Long::sum)
+			.getAsLong();
 	}
 
 	public static long sideEffectSum(long n) {
