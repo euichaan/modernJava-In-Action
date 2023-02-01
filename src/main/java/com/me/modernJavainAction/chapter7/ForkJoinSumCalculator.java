@@ -57,7 +57,7 @@ public class ForkJoinSumCalculator extends RecursiveTask<Long> {
 
 	public static long forkJoinSum(long n) {
 		// n까지의 자연수 덧셈 작업을 병렬로 수행하는 방법
-		long[] numbers = LongStream.rangeClosed(1, n).toArray();
+		long[] numbers = LongStream.rangeClosed(1, n).toArray(); // 성능 저하
 		ForkJoinTask<Long> task = new ForkJoinSumCalculator(numbers);
 		return new ForkJoinPool().invoke(task);
 	}

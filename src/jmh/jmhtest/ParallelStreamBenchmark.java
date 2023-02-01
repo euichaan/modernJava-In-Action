@@ -1,5 +1,9 @@
 package jmhtest;
 
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.ForkJoinTask;
+import java.util.concurrent.RecursiveAction;
+import java.util.concurrent.RecursiveTask;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
@@ -55,16 +59,16 @@ public class ParallelStreamBenchmark {
 	}
 
 	@Benchmark
-	public long parallelSum() {
-		return Stream.iterate(1L, i -> i + 1)
-			.limit(REPEAT_NUMBER)
-			.parallel()
+	public long rangedSum() {
+		return LongStream.rangeClosed(1, REPEAT_NUMBER)
 			.reduce(0L, Long::sum);
 	}
 
 	@Benchmark
-	public long rangedSum() {
-		return LongStream.rangeClosed(1, REPEAT_NUMBER)
+	public long parallelSum() {
+		return Stream.iterate(1L, i -> i + 1)
+			.limit(REPEAT_NUMBER)
+			.parallel()
 			.reduce(0L, Long::sum);
 	}
 

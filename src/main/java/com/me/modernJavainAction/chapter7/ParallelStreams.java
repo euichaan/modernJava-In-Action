@@ -1,5 +1,13 @@
 package com.me.modernJavainAction.chapter7;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.RecursiveAction;
+import java.util.concurrent.RecursiveTask;
+import java.util.stream.Collectors;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
@@ -42,15 +50,16 @@ public class ParallelStreams {
 			.getAsLong();
 	}
 
-	public static long sideEffectSum(long n) {
-		Accumulator accumulator = new Accumulator();
-		LongStream.rangeClosed(1, n).forEach(accumulator::add);
-		return accumulator.total;
-	}
 
 	public static long sideEffectParallelSum(long n) {
 		Accumulator accumulator = new Accumulator();
 		LongStream.rangeClosed(1, n).parallel().forEach(accumulator::add);
+		return accumulator.total;
+	}
+
+	public static long sideEffectSum(long n) {
+		Accumulator accumulator = new Accumulator();
+		LongStream.rangeClosed(1, n).forEach(accumulator::add);
 		return accumulator.total;
 	}
 
@@ -61,4 +70,6 @@ public class ParallelStreams {
 			total += value;
 		}
 	}
+
+
 }
