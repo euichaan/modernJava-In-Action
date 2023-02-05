@@ -1,9 +1,7 @@
-package com.me.modernJavainAction.Collectors;
+package com.me.modernJavainAction.collectors;
 
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.Optional;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,6 +21,4 @@ public class Book {
         ", isbn='" + isbn + '\'' +
         '}';
   }
-
-
 }

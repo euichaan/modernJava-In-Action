@@ -1,4 +1,4 @@
-package com.me.modernJavainAction.Collectors;
+package com.me.modernJavainAction.collectors;
 
 import java.util.List;
 import java.util.Map;
