@@ -11,14 +11,13 @@ public class ReplaceAll {
 		referenceCodes.stream()
 			.map(code -> Character.toUpperCase(code.charAt(0)) + code.substring(1))
 			.collect(Collectors.toList())
-			.forEach(System.out::println);
+			.forEach(System.out::println); // 새 문자열 컬렉션을 만든다.
 
 		for (ListIterator<String> iterator = referenceCodes.listIterator();
-		iterator.hasNext();) {
+			 iterator.hasNext();) {
 			String code = iterator.next();
 			iterator.set(Character.toUpperCase(code.charAt(0)) + code.substring(1));
 		}
-		System.out.println(referenceCodes);
 
 		referenceCodes.replaceAll(code ->
 			Character.toUpperCase(code.charAt(0)) + code.substring(1));

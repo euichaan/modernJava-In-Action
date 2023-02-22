@@ -1,12 +1,9 @@
 package jmhtest;
 
-import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.ForkJoinTask;
-import java.util.concurrent.RecursiveAction;
-import java.util.concurrent.RecursiveTask;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
 
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
@@ -43,41 +40,21 @@ public class ParallelStreamBenchmark {
 	}
 
 	@Benchmark
-	public long iteraviteSum() {
-		long result = 0;
-		for (long i = 1L; i <= REPEAT_NUMBER; ++i) {
-			result += i;
-		}
-		return result;
+	public Optional<List<Member>> optional() {
+		Member member1 = new Member("chan");
+		Member member2 = new Member("dong");
+		List<Member> members = List.of(member1, member2);
+		return Optional.ofNullable(members);
 	}
 
 	@Benchmark
-	public long sequentialSum() {
-		return Stream.iterate(1L, i -> i + 1)
-			.limit(REPEAT_NUMBER)
-			.reduce(0L, Long::sum);
+	public List<Member> notOptional() {
+		Member member1 = new Member("chan");
+		Member member2 = new Member("dong");
+		List<Member> members = List.of(member1, member2);
+		return members != null ? members : Collections.emptyList();
 	}
 
-	@Benchmark
-	public long rangedSum() {
-		return LongStream.rangeClosed(1, REPEAT_NUMBER)
-			.reduce(0L, Long::sum);
-	}
-
-	@Benchmark
-	public long parallelSum() {
-		return Stream.iterate(1L, i -> i + 1)
-			.limit(REPEAT_NUMBER)
-			.parallel()
-			.reduce(0L, Long::sum);
-	}
-
-	@Benchmark
-	public long parallelRangedSum() {
-		return LongStream.rangeClosed(1, REPEAT_NUMBER)
-			.parallel()
-			.reduce(0L, Long::sum);
-	}
 
 	@TearDown(Level.Invocation) // 매 번 벤치마크를 실행한 다음에는 가비지 컬렉터 동작 시도
 	public void tearDown() {
